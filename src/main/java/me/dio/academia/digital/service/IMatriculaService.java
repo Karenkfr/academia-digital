@@ -1,9 +1,10 @@
 package me.dio.academia.digital.service;
 
+import java.util.List;
+
 import me.dio.academia.digital.entity.Matricula;
 import me.dio.academia.digital.entity.form.MatriculaForm;
 
-import java.util.List;
 
 public interface IMatriculaService {
   

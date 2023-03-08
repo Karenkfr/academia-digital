@@ -3,6 +3,7 @@ package me.dio.academia.digital.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import me.dio.academia.digital.entity.Aluno;
@@ -13,6 +14,7 @@ import me.dio.academia.digital.repository.MatriculaRepository;
 import me.dio.academia.digital.service.IMatriculaService;
 
 @Service
+@Component
 public class MatriculaServiceImpl implements IMatriculaService {
 	
 	@Autowired

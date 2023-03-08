@@ -2,9 +2,6 @@ package me.dio.academia.digital.service.impl;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
-
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +13,8 @@ import me.dio.academia.digital.entity.form.AlunoUpdateForm;
 import me.dio.academia.digital.infra.utils.JavaTimeUtils;
 import me.dio.academia.digital.repository.AlunoRepository;
 import me.dio.academia.digital.service.IAlunoService;
-import me.dio.academia.digital.service.exception.NotFoundException;
 
 @Service
-@XmlTransient
 public class AlunoServiceImpl implements IAlunoService{
 	
 	
@@ -54,15 +49,24 @@ public class AlunoServiceImpl implements IAlunoService{
 		}
 		
 	}
+	
+	@Override
+	public List<AvaliacaoFisica> getAllAvaliacaoFisicaId(Long id) {
+		Aluno aluno = alunoRepository.findById(id).get();
+		return aluno.getAvaliacoes();
+		
+	}
 
 	@Override
 	public Aluno update(Long id, AlunoUpdateForm formUpdate) {
-		Aluno aluno = alunoRepository.findById(id).get();
-		aluno.setNome(formUpdate.getNome());
-		aluno.setBairro(formUpdate.getBairro());
-		aluno.setDataDeNascimento(formUpdate.getDataDeNascimento());
+		Aluno aluno = alunoRepository
+				.findById(id).get();
+				aluno.setNome(formUpdate.getNome());
+				aluno.setBairro(formUpdate.getBairro());
+				aluno.setDataDeNascimento(formUpdate.getDataDeNascimento());
 		
-		return alunoRepository.save(aluno);
+				return alunoRepository.save(aluno);
+				
 	
 	}
 
@@ -75,12 +79,6 @@ public class AlunoServiceImpl implements IAlunoService{
 		
 	}
 
-	@Override
-	public List<AvaliacaoFisica> getAllAvaliacaoFisicaId(Long id) {
-		
-		Aluno aluno = alunoRepository.findById(id).get();
-		return aluno.getAvaliacoes();
-		
-	}
+	
 
 }

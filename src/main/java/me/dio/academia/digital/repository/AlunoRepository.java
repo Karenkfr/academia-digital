@@ -14,8 +14,12 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long>{
 	
 	List<Aluno> findByDataDeNascimento(LocalDate dataDeNascimento);
 	
-	@Query(value = "DELETE * FROM tb_alunos WHERE id= :id ", nativeQuery = true)
+	@Query(value = "DELETE FROM tb_alunos WHERE id = :id", nativeQuery = true)
 	public Aluno delete(Long id);
+	
+	
+	
+	
 	
 	
 }
